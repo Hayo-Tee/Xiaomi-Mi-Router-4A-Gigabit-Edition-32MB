@@ -42,6 +42,12 @@ jobs:
     - name: Load config
       run: |
         cp .config immortalwrt/.config
+        
+    - name: Cache ccache
+      uses: actions/cache@v4
+      with:
+        path: ~/.ccache
+        key: ccache-${{ runner.os }}-${{ env.REPO_BRANCH }}
 
     - name: Download sources
       run: |
